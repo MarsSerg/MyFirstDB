@@ -1,0 +1,215 @@
+{****
+ * TODO
+ *   - git
+ *   - robodoc
+ *   - анти ord
+ *   - 25 строк
+ *   -
+ *}
+{1-1. База данных студентов группы.
+Поля: фамилия, имя, отчество, пол, возрастаст.
+Каждому студенту соответствует таблица оценок(для приложения к диплому)
+с полями: предмет, оценка (отлично, хорошо, удовлетворительно, зачет), дата сдачи.
+Сортировка по ФИО, нахождение информации по ФИО.}
+program project1;
+
+uses
+  crt;
+// комбинированный тип
+type
+  anketa = record
+    Surname: string [20];
+    Name: string [20];
+    Secondname: string [20];
+    Course: 1..4;
+    Mark: (Exellent, Normal, Satisfactorily, Offset);
+    Group: 201..208;
+
+    Date: string [20];
+  end;
+  //функция записи и изменения строки
+  function readstring(x, y, textcolor, maxlength: integer): string;
+  var
+    s: string;
+    pos: integer;
+    key: char;
+    flag: boolean;
+  begin
+    flag := True;
+    setlength(s, maxlength);
+    pos := 0;
+    gotoxy(x, y);
+    repeat
+
+      key := readkey;
+      if (key <> #8) and (key <> #13) and (pos < maxlength) then
+      begin
+        Write(key);
+        pos := pos + 1;
+        s[pos] := key;
+      end;
+      //writeln(ord(key));
+      if (key = #8) and (pos <> 0) then
+      begin
+        pos := pos - 1;
+        gotoxy(x + pos, y);
+        Write(' ');
+        gotoxy(x + pos, y);
+      end;
+      if (key = #13) then
+        flag := False;
+    until flag = False;
+    setlength(s, pos);
+    readstring := s;
+  end;
+
+  //ввод чилса и проверка было ли оно введено верно
+  procedure readlnnumber(var n: integer);
+  var
+    s: string;
+    code: integer;
+  begin
+    readln(s);
+    val(s, n, code);
+
+    while code > 0 do
+    begin
+      writeln('ошибка при вводе числа,введите заново');
+      readln(s);
+      val(s, n, code);
+    end;
+
+  end;
+  //процедура перехода новый экран
+
+
+  //процедура перебора цветов в менюшке
+  procedure setmenucolor(linenum, menu: integer);
+  begin
+    if linenum <> menu then
+      textcolor(green)
+    else
+      textcolor(lightred);
+  end;
+
+  //процедура вывода меню
+type
+  enter = array [1..9] of string;
+
+  procedure writemenu(menu: integer);
+  var
+    matrix: ENTER;
+    i, j, x: integer;
+    //TODO: Элементы - в массив
+    //все в цикл
+  begin
+
+    matrix[1] := '1- вывести всех студентов';
+    matrix[2] := '2- добавить нового студента';
+    matrix[3] := '3- удалить студента';
+    matrix[4] := '4- изменить студента';
+    matrix[5] := '5- вывести все предметы';
+    matrix[6] := '6- добавить новый предмет';
+    matrix[7] := '7- удалить предмет';
+    matrix[8] := '8- изменить предмет';
+    matrix[9] := '9-выход';
+    cursoroff;
+    for x := 1 to 9 do
+    begin
+      gotoxy(10, x + 1);
+      writeln(matrix[x]);
+      setmenucolor(x, menu);
+    end;
+
+  end;
+
+  // процедура избавления от дублирования
+  procedure draw(var z: integer);
+  var
+    q: integer;
+  begin
+    for q := 1 to z do
+      Write(#196);
+  end;
+
+
+  //процедура создания рамки
+  procedure frame(x1, y1, w, h: integer);
+  var
+    q: integer;
+  begin
+    gotoxy(x1, y1);
+    Write(#218);
+
+    draw(w);
+
+    Write(#191);
+    for q := Y1 + 1 to Y1 + h - 1 do
+    begin
+      gotoxy(X1, q);
+      Write(#179, ' ': w, #179);
+    end;
+    GOTOXY(X1, Y1 + H);
+    Write(#192);
+
+    draw(w);
+
+    Write(#217);
+  end;
+  //основная программа
+var
+  Student: Anketa;
+  g: string;
+  h, w, x1, y1, k, i, n, numberpupils: integer;
+  c, key: char;
+begin
+  numberpupils := 0;
+  //for c:=#0 to #255 do
+  //write (ord(c),' ',c,' ');
+  w := 40;
+  h := 10;
+  clrscr;
+  x1 := 9;
+  y1 := 1;
+  frame(X1, Y1, w, h);
+  k := 1;
+  writemenu(k);
+  repeat
+    repeat
+      //clrscr;
+      writemenu(k);
+      gotoxy(1, k);
+      key := readkey;
+
+
+      //writeln(ord(key));
+      if key = #72 then
+      begin
+        k := k - 1;
+        if k = 0 then
+          k := 9;
+      end;
+      if key = #80 then
+      begin
+        k := k + 1;
+        if k = 10 then
+          k := 1;
+      end;
+      writemenu(k);
+      gotoxy(1, k);
+    until key = #13;
+    gotoxy(1, 17);
+    case k of
+      1:
+      begin
+        if numberpupils = 0 then
+          writeln('учеников нет');
+
+      end;
+      2: writeln('Введите имя нового студента');
+
+    end;
+
+  until k = 9;
+  readln;
+end.                        
