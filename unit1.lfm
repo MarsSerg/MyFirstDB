@@ -1,0 +1,399 @@
+object Form1: TForm1
+  Left = 179
+  Height = 510
+  Top = 25
+  Width = 1138
+  AllowDropFiles = True
+  Caption = 'Form1'
+  ClientHeight = 0
+  ClientWidth = 0
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnDropFiles = FormDropFiles
+  LCLVersion = '1.2.4.0'
+  object ChangeStud: TButton
+    Left = 32
+    Height = 25
+    Top = 128
+    Width = 96
+    Caption = 'ChangeStud'
+    OnClick = ChangeStudClick
+    TabOrder = 0
+  end
+  object Find: TButton
+    Left = 32
+    Height = 25
+    Top = 160
+    Width = 96
+    Caption = 'Find'
+    OnClick = FindClick
+    TabOrder = 1
+  end
+  object AddSubject: TButton
+    Left = 32
+    Height = 25
+    Top = 192
+    Width = 99
+    Caption = 'AddSubject'
+    OnClick = AddSubjectClick
+    TabOrder = 2
+  end
+  object SaveTypezFile: TButton
+    Left = 32
+    Height = 25
+    Top = 288
+    Width = 99
+    Caption = 'SaveTypezFile'
+    OnClick = SaveTypezFileClick
+    TabOrder = 3
+  end
+  object ChangeSubject: TButton
+    Left = 32
+    Height = 25
+    Top = 224
+    Width = 96
+    Caption = 'ChangeSubject'
+    TabOrder = 4
+  end
+  object SaveunTpzd: TButton
+    Left = 32
+    Height = 25
+    Top = 352
+    Width = 99
+    Caption = 'SaveunTpzd'
+    OnClick = SaveunTpzdClick
+    TabOrder = 5
+  end
+  object LoadUntzd: TButton
+    Left = 32
+    Height = 25
+    Top = 384
+    Width = 96
+    Caption = 'LoadUntzd'
+    OnClick = LoadUntzdClick
+    TabOrder = 6
+  end
+  object Sort: TButton
+    Left = 32
+    Height = 25
+    Top = 416
+    Width = 96
+    Caption = 'Sort'
+    OnClick = SortClick
+    TabOrder = 7
+  end
+  object LoadTpzed: TButton
+    Left = 32
+    Height = 25
+    Top = 320
+    Width = 96
+    Caption = 'LoadTpzed'
+    OnClick = LoadTpzedClick
+    TabOrder = 8
+  end
+  object Finish: TButton
+    Left = 32
+    Height = 25
+    Top = 448
+    Width = 96
+    Caption = 'Finish'
+    OnClick = FinishClick
+    TabOrder = 9
+  end
+  object deleteStud: TButton
+    Left = 32
+    Height = 25
+    Top = 96
+    Width = 96
+    Caption = 'DeleteStudent'
+    OnClick = deleteStudClick
+    TabOrder = 10
+  end
+  object ShowAllStudents: TButton
+    Left = 32
+    Height = 25
+    Top = 64
+    Width = 99
+    Caption = 'ShowAllStudents'
+    OnClick = ShowAllStudentsClick
+    TabOrder = 11
+  end
+  object AddStud: TButton
+    Left = 32
+    Height = 25
+    Top = 32
+    Width = 96
+    Caption = 'AddStud'
+    OnClick = AddStudClick
+    TabOrder = 12
+  end
+  object DeleteSubject: TButton
+    Left = 32
+    Height = 25
+    Top = 256
+    Width = 99
+    Caption = 'DeleteSubject'
+    TabOrder = 13
+  end
+  object ListBox1: TListBox
+    Left = 200
+    Height = 440
+    Top = 24
+    Width = 272
+    DragMode = dmAutomatic
+    ItemHeight = 0
+    OnClick = ListBox1Click
+    OnDragDrop = ListBox1DragDrop
+    OnDragOver = ListBox1DragOver
+    TabOrder = 14
+  end
+  object Surname: TEdit
+    Left = 496
+    Height = 23
+    Top = 56
+    Width = 80
+    OnChange = SurnameChange
+    TabOrder = 15
+  end
+  object name1: TEdit
+    Left = 496
+    Height = 23
+    Top = 98
+    Width = 80
+    OnChange = name1Change
+    TabOrder = 16
+  end
+  object SecondName: TEdit
+    Left = 496
+    Height = 23
+    Top = 144
+    Width = 80
+    TabOrder = 17
+  end
+  object Groupnumber: TEdit
+    Left = 496
+    Height = 23
+    Top = 192
+    Width = 96
+    TabOrder = 18
+  end
+  object ListBox2: TListBox
+    Left = 784
+    Height = 393
+    Top = 31
+    Width = 312
+    ItemHeight = 0
+    TabOrder = 19
+    Visible = False
+  end
+  object HideSearch: TButton
+    Left = 895
+    Height = 25
+    Top = 445
+    Width = 75
+    Caption = 'HideSearch'
+    OnClick = HideSearchClick
+    TabOrder = 20
+  end
+  object forfind: TEdit
+    Left = 500
+    Height = 23
+    Top = 360
+    Width = 80
+    OnChange = forfindChange
+    TabOrder = 21
+  end
+  object ForSurname: TLabel
+    Left = 498
+    Height = 15
+    Top = 32
+    Width = 64
+    Caption = 'ForSurname'
+    ParentColor = False
+  end
+  object ForName: TLabel
+    Left = 498
+    Height = 15
+    Top = 80
+    Width = 49
+    Caption = 'ForName'
+    ParentColor = False
+  end
+  object ForSecondName: TLabel
+    Left = 498
+    Height = 15
+    Top = 128
+    Width = 88
+    Caption = 'ForSecondName'
+    ParentColor = False
+  end
+  object ForGroup: TLabel
+    Left = 498
+    Height = 15
+    Top = 176
+    Width = 50
+    Caption = 'ForGroup'
+    ParentColor = False
+  end
+  object ForSearch: TLabel
+    Left = 500
+    Height = 15
+    Top = 344
+    Width = 52
+    Caption = 'ForSearch'
+    ParentColor = False
+  end
+  object Button1: TButton
+    Left = 500
+    Height = 26
+    Top = 238
+    Width = 60
+    Caption = 'INI files'
+    OnClick = Button1Click
+    TabOrder = 22
+  end
+  object Button2: TButton
+    Left = 576
+    Height = 0
+    Top = 238
+    Width = 0
+    Caption = 'load ini'
+    OnClick = Button2Click
+    TabOrder = 23
+  end
+  object Panel1: TPanel
+    Left = 600
+    Height = 162
+    Top = 40
+    Width = 170
+    Caption = 'Panel1'
+    ClientHeight = 162
+    ClientWidth = 170
+    Color = clInactiveCaptionText
+    ParentColor = False
+    TabOrder = 24
+    Visible = False
+    OnClick = Panel1Click
+    object Caption1: TEdit
+      Left = 8
+      Height = 23
+      Top = 0
+      Width = 80
+      TabOrder = 0
+      Text = 'Caption1'
+    end
+    object left1: TEdit
+      Left = 8
+      Height = 23
+      Top = 32
+      Width = 80
+      TabOrder = 1
+      Text = 'left1'
+    end
+    object top1: TEdit
+      Left = 8
+      Height = 23
+      Top = 64
+      Width = 80
+      TabOrder = 2
+      Text = 'top1'
+    end
+    object width1: TEdit
+      Left = 8
+      Height = 23
+      Top = 96
+      Width = 80
+      TabOrder = 3
+      Text = 'width1'
+    end
+    object Label1: TLabel
+      Left = 96
+      Height = 15
+      Top = 8
+      Width = 42
+      Caption = 'Caption'
+      Color = clMenu
+      ParentColor = False
+      Transparent = False
+    end
+    object Label2: TLabel
+      Left = 96
+      Height = 15
+      Top = 36
+      Width = 20
+      Caption = 'Left'
+      Color = clMenu
+      ParentColor = False
+      Transparent = False
+    end
+    object Label3: TLabel
+      Left = 96
+      Height = 15
+      Top = 64
+      Width = 21
+      Caption = 'Top'
+      Color = clMenu
+      ParentColor = False
+      Transparent = False
+    end
+    object Label4: TLabel
+      Left = 96
+      Height = 15
+      Top = 96
+      Width = 32
+      Caption = 'Width'
+      Color = clMenu
+      ParentColor = False
+      Transparent = False
+    end
+  end
+  object LoadINI: TButton
+    Left = 576
+    Height = 25
+    Top = 238
+    Width = 75
+    Caption = 'LoadINI'
+    OnClick = LoadINIClick
+    TabOrder = 25
+  end
+  object Button3: TButton
+    Left = 501
+    Height = 25
+    Top = 274
+    Width = 75
+    Caption = 'XMLread'
+    OnClick = Button3Click
+    TabOrder = 26
+  end
+  object Button4: TButton
+    Left = 501
+    Height = 25
+    Top = 304
+    Width = 75
+    Caption = 'XMLSave'
+    OnClick = Button4Click
+    TabOrder = 27
+  end
+  object printeras: TButton
+    Left = 498
+    Height = 25
+    Top = 392
+    Width = 75
+    Caption = 'printeras'
+    OnClick = printerasClick
+    TabOrder = 28
+  end
+  object OpenDialog1: TOpenDialog
+    left = 664
+    top = 416
+  end
+  object SaveDialog1: TSaveDialog
+    left = 664
+    top = 448
+  end
+  object PrintDialog1: TPrintDialog
+    left = 664
+    top = 384
+  end
+end

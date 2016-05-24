@@ -6,10 +6,10 @@ interface
 
 uses
                   cin,cout,Classes, SysUtils,records,crt,Frames;
-procedure surnamesearch(a:dataarray;numberpupils:integer);
+procedure surnamesearch(a:PDataContainer);
 
 implementation
-procedure surnamesearch(a:dataarray;numberpupils:integer);
+procedure surnamesearch(a:PDataContainer);
 var i:integer;
      s,s1:string;
      parametr: boolean;
@@ -21,12 +21,12 @@ var i:integer;
      writeln('press F2 to Enter');
        littleframe(1, 19, 20, 2);
        s:=readstring(2, 20, 19, parametr,false);
-       for i:=1 to numberpupils do
+       for i:=1 to a^.number do
        begin
-         s1:=copy(a[i].surname,1,length(s));
+         s1:=copy(a^.get(i)^.surname,1,length(s));
          if s1=s then
          begin
-           //out(a,numberpupils,i) ;
+          // out(a,numberpupils,i) ;
 	 end
          else
           gotoxy (2, 24);

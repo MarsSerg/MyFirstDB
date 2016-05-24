@@ -1,9 +1,9 @@
 {****
  * TODO
- *   -
- *   -
- *   -
- *   -
+ *   - git
+ *   - robodoc
+ *   - анти ord
+ *   - 25 строк
  *   -
  *}
 {1-1. База данных студентов группы.
@@ -59,7 +59,7 @@ type
     matrix[11] := '11- сохранить файл бестиповый';
     matrix[12] := '12- открыть из файла бестипового';
     matrix[13] := '13- сортировать по алфавиту';
-    matrix[14] := '14-выход';
+    matrix[14] := '14- выход';
     cursoroff;
     for x := 1 to 14 do
     begin
@@ -82,12 +82,12 @@ type
  *
  ******}
   //сортировка пузырьковым методом
-  procedure Bubble(var item: DataArray; Count: integer);
+ { procedure Bubble(var item: DataArray; Count: integer);
   var
     i, j: integer;
     x: anketa;
   begin
-    for i := 2 to Count do
+   { for i := 2 to Count do
     begin
       for j := Count downto i do
         if item[j - 1].Surname > item[j].Surname then
@@ -96,30 +96,59 @@ type
           item[j - 1] := item[j];
           item[j] := x;
         end;
-    end;
+    end; }
   end;
 
-
+    }
   //основная программа
 var
+  bufferstud : Anketa;
   f: file of anketa;
   Student: Anketa;
   Count: word;
-  default, s: string;
+  default,apupil, s: string;
   limit, month, year, day, x3, y3, x2, y2, h, w, x, y, j, k, i, n,
-  nu, z, numberpupils, error, amount, amountst: integer;
+  nu, z, {numberpupils,} error, amount, amountst,fls: integer;
   exit, ch, key: char;
-  pupil: array [1..100] of anketa;
+  //pupil: array [1..100] of anketa;
+  pupil:PDataContainer;
   sub: array [1..100] of subject;
   flag, parametr: boolean;
   t, t2: integer;
-  test: DataArray;
+  test: PDataContainer;
   er: integer;
   fname: string;
   fnotype: file;
 begin
   error := 0;
-  numberpupils := 0;
+  //numberpupils := 0;
+
+  //{$define List}
+  //{$ifdef List}
+  //pupil:=new(PListContainer,init);
+  //{$else}
+  //   pupil:=new(PArrayContainer,init);
+  //end;
+  //{$endif}
+repeat
+ clrscr;
+ textcolor (green);
+writeln ('which version do you prefer lists or arrays? (l/a)');
+writeln ('Press F2 to choose');
+ littleframe(1,3,2,2);
+ apupil  := readstring(2, 4, 1, parametr, False);
+ if apupil = 'l' then
+         pupil:=new(PListContainer,init)
+else
+  if  apupil='a'  then
+     pupil:=new(PArrayContainer,init)
+else
+ pupil:=nil
+until pupil <> nil;
+
+
+
+
   x3 := 1;
   y3 := 18;
   x2 := 15;
@@ -161,8 +190,8 @@ begin
         case k of
           1:
           begin
-            if numberpupils > 0 then
-              out(pupil, numberpupils)
+            if pupil^.number > 0 then
+              out(pupil)
             else
             begin
               writeln('Неправильный номер ученика');
@@ -198,7 +227,7 @@ begin
                   writeln('Введите фамилию');
                   littleframe(1, 6, 20, 2);
                   gotoxy(2, 7);
-                  pupil[numberpupils + 1].Surname :=
+                  bufferstud.Surname :=
                     readstring(2, 7, 19, parametr, False);
                 end;
 
@@ -208,7 +237,7 @@ begin
                   writeln('Введите имя');
                   littleframe(1, 10, 20, 2);
                   gotoxy(2, 11);
-                  pupil[numberpupils + 1].Name := readstring(2, 11, 19, parametr, False);
+                  bufferstud.Name := readstring(2, 11, 19, parametr, False);
                 end;
                 if parametr = False then
                 begin
@@ -216,7 +245,7 @@ begin
                   writeln('Введите отчество');
                   littleframe(1, 14, 20, 2);
                   gotoxy(2, 15);
-                  pupil[numberpupils + 1].secondName :=
+                  bufferstud.secondName :=
                     readstring(2, 15, 19, parametr, False);
                 end;
                 if parametr = False then
@@ -238,30 +267,29 @@ begin
                     end
                     else
                       Write('': 40);
-                    pupil[numberpupils + 1].Group := er;
+                   bufferstud.Group := er;
                   until error = 0;
                 end;
 
               until parametr = True;
-              numberpupils := numberpupils + 1;
+              pupil^.add(bufferstud);
+              //numberpupils := numberpupils + 1;
             end;
             clrscr;
           end;
 
           3:
           begin
-            if numberpupils > 0 then
+            if pupil^.number > 0 then
             begin
               clrscr;
               repeat
                 writeln('Введите номер ученика');
                 readln(t);
-                if (t < 1) or (t > numberpupils) then
+                if (t < 1) or (t > pupil^.number) then
                   writeln('Неправильный номер ученика');
-              until (t >= 1) and (t <= numberpupils);
-              for i := t to numberpupils - 1 do
-                pupil[i] := pupil[i + 1];
-              numberpupils := numberpupils - 1;
+              until (t >= 1) and (t <= pupil^.number);
+              pupil^.delete(t);
             end
             else
             begin
@@ -271,14 +299,14 @@ begin
             end;
           end;
 
-          4: if numberpupils > 0 then
+          4: if pupil^.number > 0 then
             begin
               repeat
                 writeln('Введите номер ученика для изменения');
                 readln(i);
-                if (i < 1) or (i > numberpupils) then
+                if (i < 1) or (i > pupil^.number) then
                   writeln('неправильный номер ученика');
-              until (i >= 1) and (i <= numberpupils);
+              until (i >= 1) and (i <= pupil^.number);
               clrscr;
               parametr := False;
               repeat
@@ -295,7 +323,7 @@ begin
                     writeln('Введите фамилию');
                     littleframe(1, 6, 20, 2);
                     gotoxy(2, 7);
-                    pupil[i].Surname := readstring(2, 7, 19, parametr, False);
+                    pupil^.get(i)^.Surname := readstring(2, 7, 19, parametr, False);
                   end;
                   if parametr = False then
                   begin
@@ -303,7 +331,7 @@ begin
                     writeln('Введите имя');
                     littleframe(1, 10, 20, 2);
                     gotoxy(2, 11);
-                    pupil[i].Name := readstring(2, 11, 19, parametr, False);
+                    pupil^.get(i)^.Name := readstring(2, 11, 19, parametr, False);
                   end;
                   if parametr = False then
                   begin
@@ -311,7 +339,7 @@ begin
                     writeln('Введите отчество');
                     littleframe(1, 14, 20, 2);
                     gotoxy(2, 15);
-                    pupil[i].secondName := readstring(2, 15, 19, parametr, False);
+                    pupil^.get(i)^.secondName := readstring(2, 15, 19, parametr, False);
                   end;
                   if parametr = False then
                   begin
@@ -332,26 +360,26 @@ begin
                       end
                       else
                         Write('': 40);
-                      pupil[numberpupils + 1].Group := er;
+                      pupil^.get(i)^.Group := er;
                     until error = 0;
                   end;
                 end;
               until parametr = True;
             end;
 
-          5: surnamesearch(pupil, numberpupils);
+          5: surnamesearch(pupil);
 
           6:
-            if numberpupils > 0 then
+            if pupil^.number > 0 then
             begin
               repeat
                 writeln('Введите номер ученика для изменения');
                 littleframemenu(x3, y3, 5, 2);
                 gotoxy(2, 19);
                 readln(i);
-                if (i < 1) or (i > numberpupils) then
+                if (i < 1) or (i > pupil^.number) then
                   writeln('неправильный номер ученика');
-              until (i >= 1) and (i <= numberpupils);
+              until (i >= 1) and (i <= pupil^.number);
               gotoxy(1, 17);
               Write('': 40);
               gotoxy(1, 17);
@@ -379,7 +407,7 @@ begin
                     writeln('Введите предмет');
                     littleframe(1, 6, 20, 2);
                     gotoxy(2, 7);
-                    pupil[i].Subjects[n].lesson := readstring(2, 7, 19, parametr, False);
+                    pupil^.get(i)^.Subjects[n].lesson := readstring(2, 7, 19, parametr, False);
                   end;
                   if parametr = False then
                   begin
@@ -388,36 +416,36 @@ begin
                       writeln('Введите дату (год.месяц.день)');
                       littleframe(1, 10, 4, 2);
                       gotoxy(2, 11);
-                      Pupil[i].subjects[n].date.year :=
+                      pupil^.get(i)^.subjects[n].date.year :=
                         StrToInt(readstring(2, 11, 4, parametr, True));
-                      if not (Pupil[i].subjects[n].date.year > 0) then
+                      if not (pupil^.get(i)^.subjects[n].date.year > 0) then
                       begin
                         gotoxy(37, 19);
                         Write('Введите год больше нуля');
                       end;
 
-                    until Pupil[i].subjects[n].date.year >= 0;
+                    until pupil^.get(i)^.subjects[n].date.year >= 0;
                     repeat
                       littleframe(7, 10, 4, 2);
                       gotoxy(8, 11);
-                      Pupil[i].subjects[n].date.month :=
+                      pupil^.get(i)^.subjects[n].date.month :=
                         StrToInt(readstring(8, 11, 2, parametr, True));
 
-                      if not ((Pupil[i].subjects[n].date.month >= 1) and
-                        (Pupil[i].subjects[n].date.month <= 12)) then
+                      if not ((pupil^.get(i)^.subjects[n].date.month >= 1) and
+                        (pupil^.get(i)^.subjects[n].date.month <= 12)) then
                       begin
                         gotoxy(37, 19);
                         Write('Введите месяц от 1 до 12');
                       end;
 
 
-                    until (Pupil[i].subjects[n].date.month >= 1) and
-                      (Pupil[i].subjects[n].date.month <= 12);
-                    case Pupil[i].subjects[n].date.month
+                    until (pupil^.get(i)^.subjects[n].date.month >= 1) and
+                      (pupil^.get(i)^.subjects[n].date.month <= 12);
+                    case pupil^.get(i)^.subjects[n].date.month
                       of
                       1, 3, 5, 7, 8, 10, 12: limit := 31;
                       4, 6, 9, 11: limit := 30;
-                      2: if Pupil[i].subjects[n].date.year = 2016 then
+                      2: if pupil^.get(i)^.subjects[n].date.year = 2016 then
                           limit := 29
                         else
                           limit := 28;
@@ -425,24 +453,24 @@ begin
                     repeat
                       littleframe(13, 10, 4, 2);
                       gotoxy(14, 11);
-                      Pupil[i].subjects[n].date.day :=
+                      pupil^.get(i)^.subjects[n].date.day :=
                         StrToInt(readstring(14, 11, 2, parametr, True));
-                      if (Pupil[i].subjects[n].date.day >= limit) or
-                        (Pupil[i].subjects[n].date.day <= 1) then
+                      if (pupil^.get(i)^.subjects[n].date.day >= limit) or
+                        (pupil^.get(i)^.subjects[n].date.day <= 1) then
                       begin
                         gotoxy(37, 19);
-                        Write('In ', Pupil[i].subjects[n].date.month, ' can be', limit,
+                        Write('In ', pupil^.get(i)^.subjects[n].date.month, ' can be', limit,
                           'days , u wrote wrong data');
                       end;
-                    until (Pupil[i].subjects[n].date.day <= limit) and
-                      (Pupil[i].subjects[n].date.day >= 1);
+                    until (pupil^.get(i)^.subjects[n].date.day <= limit) and
+                      (pupil^.get(i)^.subjects[n].date.day >= 1);
                   end;
                   if parametr = False then
                   begin
                     gotoxy(2, 13);
                     writeln('Введите оценки');
                     littleframe(1, 14, 20, 2);
-                    Pupil[i].subjects[n].Mark := readstring(2, 15, 19, parametr, True);
+                    pupil^.get(i)^.subjects[n].Mark := readstring(2, 15, 19, parametr, True);
                   end;
                 end;
               until parametr = True;
@@ -460,8 +488,8 @@ begin
               if IOresult <> 0 then
                 writeln('Не удалось save файл!');
             until ioresult = 0;
-            for i := 1 to numberpupils do
-              Write(f, pupil[i]);
+            for i := 1 to pupil^.number do
+              Write(f, pupil^.get(i)^);
             Close(f);
           end;
 
@@ -478,10 +506,14 @@ begin
               if IOresult <> 0 then
                 writeln('Не удалось открыть файл!');
             until ioresult = 0;
-            numberpupils := filesize(f);
-            for i := 1 to numberpupils do
-              Read(f, pupil[i]);
-            Close(f);
+            fls := filesize(f);
+            pupil^.clear;
+            for i := 1 to fls do
+            begin
+              Read(f, bufferstud);
+              pupil^.add(bufferstud);
+	    end;
+	    Close(f);
           end;
 
           11:
@@ -496,10 +528,11 @@ begin
               if IOresult <> 0 then
                 writeln('Не удалось save файл!');
             until ioresult = 0;
-            blockwrite(fnotype, numberpupils, sizeof(numberpupils));
-            for i := 1 to numberpupils do
+            fls:=pupil^.number;
+            blockwrite(fnotype, fls, sizeof(fls));
+            for i := 1 to fls do
             begin
-              blockwrite(fnotype, pupil[i], sizeof(pupil[i]));
+              blockwrite(fnotype, pupil^.get(i)^, sizeof(pupil^.get(i)^));
             end;
             Close(fnotype);
           end;
@@ -517,10 +550,12 @@ begin
               else
                 writeln('База данных загружена');
             until ioresult = 0;
-            blockread(fnotype, numberpupils, sizeof(numberpupils));
-            for i := 1 to numberpupils do
+            blockread(fnotype, fls, sizeof(fls));
+            pupil^.clear;
+            for i := 1 to fls do
             begin
-              blockread(fnotype, pupil[i], sizeof(pupil[i]));
+              blockread(fnotype, bufferstud, sizeof(bufferstud));
+              pupil^.add(bufferstud);
             end;
             Close(fnotype);
             readkey;
@@ -528,10 +563,12 @@ begin
           13:
           begin
             clrscr;
-            if numberpupils > 0 then
-              Bubble(pupil, numberpupils);
+            if pupil^.number > 0 then
+              pupil^.sort;
           end;
         end;
 
   until (k = 14) or (key = #27);
+
+    dispose(pupil,done);
 end.
