@@ -4,16 +4,25 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="10">
+    <Units Count="11">
       <Unit0>
         <Filename Value="BD1.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BD1"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="291"/>
-        <CursorPos X="14" Y="309"/>
+        <TopLine Value="294"/>
+        <CursorPos X="56" Y="136"/>
         <UsageCount Value="238"/>
+        <Bookmarks Count="6">
+          <Item0 X="57" Y="398" ID="2"/>
+          <Item1 X="1" Y="41" ID="3"/>
+          <Item2 X="1" Y="17" ID="4"/>
+          <Item3 X="70" Y="443" ID="5"/>
+          <Item4 X="31" Y="405" ID="8"/>
+          <Item5 X="1" Y="189" ID="7"/>
+        </Bookmarks>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -33,7 +42,7 @@
         <UnitName Value="Frames"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
+        <TopLine Value="95"/>
         <CursorPos X="50" Y="14"/>
         <UsageCount Value="238"/>
         <Loaded Value="True"/>
@@ -42,11 +51,10 @@
         <Filename Value="cin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Cin"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="22"/>
-        <CursorPos X="18" Y="33"/>
+        <TopLine Value="1"/>
+        <CursorPos X="33" Y="12"/>
         <UsageCount Value="238"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -56,8 +64,8 @@
         <UnitName Value="cinfornumbers"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="8"/>
-        <CursorPos X="36" Y="23"/>
+        <TopLine Value="1"/>
+        <CursorPos X="31" Y="9"/>
         <UsageCount Value="238"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -67,8 +75,8 @@
         <UnitName Value="records"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="23" Y="33"/>
+        <TopLine Value="104"/>
+        <CursorPos X="29" Y="121"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
       </Unit5>
@@ -88,7 +96,7 @@
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="9"/>
-        <CursorPos X="25" Y="19"/>
+        <CursorPos X="13" Y="29"/>
         <UsageCount Value="207"/>
         <Loaded Value="True"/>
       </Unit7>
@@ -98,8 +106,8 @@
         <UnitName Value="Cout"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="34"/>
-        <CursorPos X="33" Y="34"/>
+        <TopLine Value="147"/>
+        <CursorPos X="13" Y="162"/>
         <UsageCount Value="207"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -109,129 +117,141 @@
         <WindowIndex Value="0"/>
         <TopLine Value="6"/>
         <CursorPos X="18" Y="24"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="..\spiski\project1.lpr"/>
+        <UnitName Value="project1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="130"/>
+        <CursorPos X="21" Y="153"/>
+        <UsageCount Value="11"/>
+      </Unit10>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="335" Column="29" TopLine="317"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="228" Column="24" TopLine="210"/>
       </Position1>
       <Position2>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="481" Column="13" TopLine="463"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="261" Column="15" TopLine="253"/>
       </Position2>
       <Position3>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="482" Column="27" TopLine="463"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="276" Column="4" TopLine="261"/>
       </Position3>
       <Position4>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="499" Column="33" TopLine="481"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="273" Column="40" TopLine="195"/>
       </Position4>
       <Position5>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="500" Column="27" TopLine="481"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="216" Column="32" TopLine="195"/>
       </Position5>
       <Position6>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="520" Column="32" TopLine="502"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="205" Column="1" TopLine="195"/>
       </Position6>
       <Position7>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="521" Column="27" TopLine="502"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="206" Column="1" TopLine="195"/>
       </Position7>
       <Position8>
         <Filename Value="BD1.pas"/>
-        <Caret Line="531" Column="16" TopLine="502"/>
+        <Caret Line="275" Column="33" TopLine="227"/>
       </Position8>
       <Position9>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="532" Column="29" TopLine="502"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="204" Column="1" TopLine="195"/>
       </Position9>
       <Position10>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="531" Column="16" TopLine="502"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="205" Column="1" TopLine="195"/>
       </Position10>
       <Position11>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="475" Column="56" TopLine="157"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="206" Column="1" TopLine="195"/>
       </Position11>
       <Position12>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="196" Column="63" TopLine="178"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="207" Column="1" TopLine="195"/>
       </Position12>
       <Position13>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="243" Column="66" TopLine="150"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="216" Column="1" TopLine="195"/>
       </Position13>
       <Position14>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="161" Column="3" TopLine="150"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="217" Column="1" TopLine="195"/>
       </Position14>
       <Position15>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="165" Column="1" TopLine="150"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="218" Column="1" TopLine="195"/>
       </Position15>
       <Position16>
-        <Filename Value="cout.pas"/>
-        <Caret Line="38" Column="1" TopLine="23"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="220" Column="1" TopLine="196"/>
       </Position16>
       <Position17>
-        <Filename Value="cout.pas"/>
-        <Caret Line="33" Column="48" TopLine="24"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="221" Column="1" TopLine="197"/>
       </Position17>
       <Position18>
-        <Filename Value="cout.pas"/>
-        <Caret Line="36" Column="11" TopLine="26"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="223" Column="1" TopLine="199"/>
       </Position18>
       <Position19>
-        <Filename Value="cout.pas"/>
-        <Caret Line="12" Column="42" TopLine="1"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="221" Column="27" TopLine="203"/>
       </Position19>
       <Position20>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="164" Column="1" TopLine="150"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="218" Column="44" TopLine="214"/>
       </Position20>
       <Position21>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="251" Column="25" TopLine="154"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="206" Column="30" TopLine="189"/>
       </Position21>
       <Position22>
-        <Filename Value="cout.pas"/>
-        <Caret Line="18" Column="35" TopLine="1"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="205" Column="1" TopLine="189"/>
       </Position22>
       <Position23>
-        <Filename Value="cout.pas"/>
-        <Caret Line="38" Column="1" TopLine="23"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="206" Column="1" TopLine="189"/>
       </Position23>
       <Position24>
-        <Filename Value="cout.pas"/>
-        <Caret Line="39" Column="1" TopLine="23"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="207" Column="1" TopLine="189"/>
       </Position24>
       <Position25>
-        <Filename Value="cout.pas"/>
-        <Caret Line="40" Column="1" TopLine="23"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="209" Column="1" TopLine="189"/>
       </Position25>
       <Position26>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="165" Column="1" TopLine="154"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="210" Column="1" TopLine="189"/>
       </Position26>
       <Position27>
-        <Filename Value="cout.pas"/>
-        <Caret Line="38" Column="1" TopLine="23"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="211" Column="1" TopLine="189"/>
       </Position27>
       <Position28>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="165" Column="1" TopLine="154"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="212" Column="1" TopLine="189"/>
       </Position28>
       <Position29>
-        <Filename Value="BD1.pas"/>
-        <Caret Line="160" Column="2" TopLine="144"/>
+        <Filename Value="records.pas"/>
+        <Caret Line="237" Column="1" TopLine="223"/>
       </Position29>
+      <Position30>
+        <Filename Value="records.pas"/>
+        <Caret Line="212" Column="35" TopLine="189"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
   <EditorMacros Count="0"/>

@@ -9,7 +9,7 @@ uses
 type
   minienter = array [1..3] of string;
 
-       procedure out(var pupil:dataarray;numberpupils:integer);
+       procedure out(var pupil:PDataContainer);
        procedure miniwritemenu(menu: integer);
 implementation
  procedure miniwritemenu(menu: integer);
@@ -30,14 +30,14 @@ implementation
   end;
 
 
- procedure out(var pupil:dataarray;numberpupils:integer);
+ procedure out(var pupil:PDataContainer);
  var n,y2:integer;
      ch,key:char;
      k,j,i: integer;
 begin
   k:=1;
   y2 := 23;
-  if numberpupils < 0 then
+  if pupil^.number <= 0 then
   Write('Нет ни одного ученика')
   else
   i:=1;
@@ -59,43 +59,43 @@ clrscr;
       Write('Фамилия');
       littleframe(13, 5, 20, 2);
       gotoxy(14, 6);
-      Write(pupil[i].Surname);
+      Write(pupil^.get(i)^.Surname);
       {=================}
       gotoxy(2, 9);
       Write('Имя');
       littleframe(13, 8, 20, 2);
       gotoxy(14, 9);
-      Write(pupil[i].Name);
+      Write(pupil^.get(i)^.Name);
       {=================}
       gotoxy(2, 12);
       Write('Группа');
       littleframe(13, 11, 20, 2);
       gotoxy(14, 12);
-      Write(pupil[i].Group);
+      Write(pupil^.get(i)^.Group);
       {=================}
       gotoxy(2, 15);
       Write('Предмет');
       littleframe(13, 14, 20, 2);
       gotoxy(14, 15);
-      Write(pupil[i].subjects[n].lesson);
+      Write(pupil^.get(i)^.subjects[n].lesson);
       {=================}
       gotoxy(2, 18);
       Write('Дата');
       littleframe(13,18,4,2);
         gotoxy(14, 19);
-        write(Pupil[i].subjects[n].date.year);
+        write(Pupil^.get(i)^.subjects[n].date.year);
       littleframe(19, 18, 4, 2);
         gotoxy(20, 19);
-        write(Pupil[i].subjects[n].date.month);
+        write(Pupil^.get(i)^.subjects[n].date.month);
         littleframe(25, 18, 4, 2);
         gotoxy(26, 19);
-        write(Pupil[i].subjects[n].date.day ) ;
+        write(Pupil^.get(i)^.subjects[n].date.day ) ;
        {=================}
       gotoxy(2, 21);
       writeln('Oценки');
          littleframe(13,21,20,2);
          gotoxy(14, 21);
-        Write(Pupil[i].subjects[n].Mark);
+        Write(Pupil^.get(i)^.subjects[n].Mark);
     end;
 while KeyPressed do
 ReadKey;
@@ -112,12 +112,12 @@ case ch of
 begin
   dec(i);
   if i<1 then
-     i:=numberpupils;
+     i:=pupil^.number;
 end;
  #80:
 begin
   inc(i);
-  if i>numberpupils then
+  if i>pupil^.number then
     i:=1;
 end;
  #60 :
@@ -152,14 +152,14 @@ end;
       if (k <> 3) then
       case k of
           1:begin
-            for j := i to numberpupils - 1 do
-            pupil[j] := pupil[j + 1];
-            numberpupils := numberpupils - 1;
-
+            //for j := i to pupil^.number - 1 do
+            //pupil[j] := pupil[j + 1];
+            //numberpupils := numberpupils - 1;
+             pupil^.delete(i);
+             i:=1;
 	  end;
           2:begin
-           gotoxy(13,10);
-            writeln('мамой клянусь работало');
+
 	  end;
 
       end;
